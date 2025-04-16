@@ -39,9 +39,17 @@ class Program():
         5: "Haidee"
     }
 
-    def generate(self, array_of_content):
-        return np.random.randint(0, self.NUM_OF_SUBJECTS + 1, size=(self.NUM_OF_BLOCKS,
-                                                                    self.NUM_OF_DAYS))
+    def generate(self):
+        pass
+
+    def calculate_fitness(self):
+        pass
+
+    def crossover(self):
+        pass
+
+    def mutate(self):
+        pass
 
     def run(self):
         init(autoreset=True)
