@@ -6,10 +6,10 @@ from rich.table import Table
 
 
 class Program():
-    NUMS_OF_DAYS = 5
-    NUMS_OF_CLASSROOMS = 5
-    NUMS_OF_TEACHERS = 5
-    NUMS_OF_BLOCKS = 7
+    NUM_OF_DAYS = 5
+    NUM_OF_CLASSROOMS = 5
+    NUM_OF_TEACHERS = 5
+    NUM_OF_BLOCKS = 7
     NUM_OF_SUBJECTS = 5
     POPULATION_SIZE = 50
     NUM_OF_GENRATIONS = 100
@@ -38,6 +38,10 @@ class Program():
         4: "Aaron",
         5: "Haidee"
     }
+
+    def generate(self, array_of_content):
+        return np.random.randint(0, self.NUM_OF_SUBJECTS + 1, size=(self.NUM_OF_BLOCKS,
+                                                                    self.NUM_OF_DAYS))
 
     def run(self):
         init(autoreset=True)
