@@ -1,7 +1,31 @@
 ---
+import Card from "../components/Card.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
-  <h1>Hola mundo</h1>
-</Layout>
+  <h1 class="text-4xl w-full p-8 font-bold text-center">
+    Generador de Horarios Escolares
+  </h1>
+  <main
+    class="mx-auto grid grid-cols-1 md:grid-cols-[1fr_300px] justify-center gap-4 h-full p-8 pt-0"
+  >
+    <Card>
+      <section class="flex flex-col gap-1">
+        <h2 class="text-2xl font-bold">Horario Generado</h2>
+        <p class="text-gray-600">
+          Vista del horario escolar generado con el algoritmo genético
+        </p>
+      </section>
+      <section></section>
+    </Card>
+
+    <Card>
+      <section class="flex flex-col gap-1">
+        <h2 class="text-2xl font-bold">Configuración</h2>
+        <p class="text-gray-500">Ajusta los parámetros y datos del generador</p>
+      </section>
+      <section></section>
+    </Card>
+  </main></Layout
+>
