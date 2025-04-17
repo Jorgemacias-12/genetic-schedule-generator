@@ -3,6 +3,8 @@ from rich.console import Console
 from rich.table import Table
 from rich.style import Style
 from colorama import init, Fore
+import time
+import tracemalloc
 
 init(autoreset=True)
 
@@ -54,12 +56,9 @@ class Program():
     def generate_fixed_teacher_assignment(self):
         subject_teacher_map = {}
         teacher_ids = list(self.teachers.keys())
-
         r.shuffle(teacher_ids)
-
         for i, subject_id in enumerate(self.subjects.keys()):
             subject_teacher_map[subject_id] = teacher_ids[i % len(teacher_ids)]
-
         return subject_teacher_map
 
     def generate_schedule(self, subject_teacher_map):
@@ -74,23 +73,19 @@ class Program():
         score = 0
         teacher_schedule = set()
         classroom_schedule = set()
-
         for block in range(self.NUM_OF_BLOCKS):
             for day in range(self.NUM_OF_DAYS):
                 entry = schedule[block][day]
                 if entry:
                     _, teacher_id, classroom_id = entry
-
                     if (teacher_id, day, block) in teacher_schedule:
                         score -= 10
                     else:
                         teacher_schedule.add((teacher_id, day, block))
-
                     if (classroom_id, day, block) in classroom_schedule:
                         score -= 10
                     else:
                         classroom_schedule.add((classroom_id, day, block))
-
         return score
 
     def crossover(self, parent1, parent2):
@@ -145,9 +140,21 @@ class Program():
 
     def run(self):
         print(f"{Fore.LIGHTBLUE_EX}¡Bienvenido al generador de horarios!\n")
+
+        start_time = time.time()
+        tracemalloc.start()
+
         subject_teacher_map = self.generate_fixed_teacher_assignment()
         schedule = self.generate_schedule(subject_teacher_map)
         self.print_schedule(schedule)
+
+        current, peak = tracemalloc.get_traced_memory()
+        tracemalloc.stop()
+        end_time = time.time()
+
+        print(f"\n{Fore.YELLOW}Tiempo total: {end_time - start_time:.4f} segundos")
+        print(f"{Fore.CYAN}Memoria usada: {current / 1024:.2f} KB")
+        print(f"{Fore.MAGENTA}Pico de memoria: {peak / 1024:.2f} KB")
 
 
 if __name__ == "__main__":
