@@ -1,22 +1,70 @@
+---
+import "@fontsource/ubuntu/300.css";
+import "@fontsource/ubuntu/400.css";
+import "@fontsource/ubuntu/500.css";
+import "@fontsource/ubuntu/700.css";
+---
+
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+<html lang="es">
+  <head>
+    <!-- Configuración básica -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Metadatos esenciales para SEO -->
+    <title>Generar horarios usando algoritmos genéticos</title>
+    <meta
+      name="description"
+      content="Descripción precisa de 150-160 caracteres"
+    />
+    <meta name="keywords" content="palabra1, palabra2, palabra3" />
+    <meta name="author" content="Nombre del autor" />
+
+    <!-- Favicon moderno (formato recomendado) -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Preconexión para recursos externos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Preload para recursos críticos -->
+    <link rel="preload" href="/css/styles.css" as="style" />
+    <link rel="preload" href="/js/main.js" as="script" />
+
+    <!-- Lucide Icons (CDN) -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/lucide@latest/font/lucide.css"
+    />
+
+    <!-- Open Graph / Redes Sociales -->
+    <meta property="og:title" content="Título para redes sociales" />
+    <meta property="og:description" content="Descripción para compartir" />
+    <meta property="og:image" content="https://tusitio.com/img/og-image.jpg" />
+    <meta property="og:url" content="https://tusitio.com" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@tuusuario" />
+
+    <!-- Canonical URL (para evitar contenido duplicado) -->
+    <link rel="canonical" href="https://tusitio.com" />
+
+    <!-- Hojas de estilo -->
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body class="min-h-screen">
+    <slot />
+  </body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+  body {
+    font-family: "Ubuntu", sans-serif;
+  }
 </style>
